@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Dias de Namoro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+        }
+        #contador {
+            font-size: 2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contador de Dias de Namoro</h1>
+    <p>Estamos juntos há:</p>
+    <div id="contador">0 dias</div>
+
+    <script>
+        // Coloque a data de início do namoro aqui
+        const dataInicio = new Date('2023-12-25'); // Exemplo: 1 de Janeiro de 2023
+
+        function atualizarContador() {
+            const agora = new Date();
+            const diferencaTempo = agora - dataInicio;
+            const dias = Math.floor(diferencaTempo / (1000 * 60 * 60 * 24));
+            document.getElementById('contador').innerText = dias + ' dias';
+        }
+
+        atualizarContador();
+        setInterval(atualizarContador, 1000 * 60 * 60 * 24); // Atualiza uma vez por dia
+    </script>
+</body>
+</html>
