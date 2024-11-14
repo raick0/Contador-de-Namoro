@@ -5,35 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contador de Dias de Namoro</title>
     <style>
+        /* Fundo com a imagem do papel kraft */
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('https://github.com/raick0/Contador-de-Namoro/blob/491dd6ef35edda1168a51a072aa444b27b7df40f/Design%20sem%20nome_20241114_095042_0000.png') center/cover no-repeat;
+            font-family: 'Courier New', cursive;
+            color: #6b4226; /* Cor do texto para combinar com o visual */
         }
+
+        /* Caixa de texto central */
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo levemente transparente para melhorar a leitura */
+            padding: 20px 40px;
+            border-radius: 8px;
+            max-width: 300px;
+        }
+
+        /* Estilos do título */
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos do contador */
         #contador {
-            font-size: 2em;
-            color: #333;
+            font-size: 1.3em;
+            line-height: 1.6em;
+        }
+
+        /* Texto de rodapé */
+        .footer {
+            margin-top: 20px;
+            font-size: 1em;
         }
     </style>
 </head>
 <body>
-    <h1>Contador de Dias de Namoro</h1>
-    <p>Estamos juntos há:</p>
-    <div id="contador">0 dias</div>
+    <!-- Estrutura do site -->
+    <div class="container">
+        <!-- Texto inicial -->
+        <h1>estamos juntos há:</h1>
+
+        <!-- Contador de dias, horas, minutos e segundos -->
+        <div id="contador">XX dias, XX horas, XX minutos e XX segundos</div>
+
+        <!-- Texto "te amo" -->
+        <div class="footer">te amo ♡</div>
+    </div>
 
     <script>
         // Coloque a data de início do namoro aqui
-        const dataInicio = new Date('2023-12-25'); // Exemplo: 1 de Janeiro de 2023
+        const dataInicio = new Date('2023-12-25T18:00:00'); // Exemplo: 1 de Janeiro de 2023
 
         function atualizarContador() {
             const agora = new Date();
             const diferencaTempo = agora - dataInicio;
+
             const dias = Math.floor(diferencaTempo / (1000 * 60 * 60 * 24));
-            document.getElementById('contador').innerText = dias + ' dias';
+            const horas = Math.floor((diferencaTempo % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferencaTempo % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferencaTempo % (1000 * 60)) / 1000);
+
+            document.getElementById('contador').innerText = 
+                `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
         }
 
         atualizarContador();
-        setInterval(atualizarContador, 1000 * 60 * 60 * 24); // Atualiza uma vez por dia
+        setInterval(atualizarContador, 1000);
     </script>
 </body>
 </html>
