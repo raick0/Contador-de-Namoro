@@ -18,13 +18,13 @@
         }
 
         /* Caixa de texto central */
-.container {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo levemente transparente */
-    padding: 15px 25px; /* Reduzindo o espaçamento interno */
-    border-radius: 8px;
-    max-width: 250px; /* Diminuindo a largura máxima */
-}
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.5); /* Fundo levemente transparente */
+            padding: 15px 25px; /* Reduzindo o espaçamento interno */
+            border-radius: 8px;
+            max-width: 250px; /* Diminuindo a largura máxima */
+        }
 
         /* Estilos do título */
         h1 {
@@ -36,6 +36,25 @@
         #contador {
             font-size: 1.3em;
             line-height: 1.6em;
+        }
+
+        /* Layout para os contadores de tempo */
+        .linha {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        /* Estilos para centralizar unidades em linha individual */
+        .linha-unica {
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* Impede quebra entre números e unidades */
+        .time-unit {
+            white-space: nowrap;
         }
 
         /* Texto de rodapé */
@@ -52,7 +71,18 @@
         <h1>estamos juntos há:</h1>
 
         <!-- Contador de dias, horas, minutos e segundos -->
-        <div id="contador">XX dias, XX horas, XX minutos e XX segundos</div>
+        <div id="contador">
+            <div class="linha">
+                <span class="time-unit" id="dias">XX dias</span>
+                <span class="time-unit" id="horas">XX horas</span>
+            </div>
+            <div class="linha-unica">
+                <span class="time-unit" id="minutos">XX minutos</span>
+            </div>
+            <div class="linha-unica">
+                <span class="time-unit" id="segundos">XX segundos</span>
+            </div>
+        </div>
 
         <!-- Texto "te amo" -->
         <div class="footer">te amo ♡</div>
@@ -60,7 +90,7 @@
 
     <script>
         // Coloque a data de início do namoro aqui
-        const dataInicio = new Date('2023-12-25T18:00:00'); // Exemplo: 1 de Janeiro de 2023
+        const dataInicio = new Date('2023-12-25T18:00:00');
 
         function atualizarContador() {
             const agora = new Date();
@@ -71,8 +101,10 @@
             const minutos = Math.floor((diferencaTempo % (1000 * 60 * 60)) / (1000 * 60));
             const segundos = Math.floor((diferencaTempo % (1000 * 60)) / 1000);
 
-            document.getElementById('contador').innerText = 
-                `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+            document.getElementById('dias').innerText = `${dias} dias`;
+            document.getElementById('horas').innerText = `${horas} horas`;
+            document.getElementById('minutos').innerText = `${minutos} minutos`;
+            document.getElementById('segundos').innerText = `${segundos} segundos`;
         }
 
         atualizarContador();
