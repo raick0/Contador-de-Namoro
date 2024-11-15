@@ -73,11 +73,11 @@
         <!-- Contador de dias, horas, minutos e segundos -->
         <div id="contador">
             <div class="linha">
-                <span class="time-unit" id="dias">XX dias</span>
+                <span class="time-unit" id="dias">XX dias,</span>
                 <span class="time-unit" id="horas">XX horas</span>
             </div>
             <div class="linha-unica">
-                <span class="time-unit" id="minutos">XX minutos</span>
+                <span class="time-unit" id="minutos">XX minutos e</span>
             </div>
             <div class="linha-unica">
                 <span class="time-unit" id="segundos">XX segundos</span>
@@ -101,9 +101,9 @@
             const minutos = Math.floor((diferencaTempo % (1000 * 60 * 60)) / (1000 * 60));
             const segundos = Math.floor((diferencaTempo % (1000 * 60)) / 1000);
 
-            document.getElementById('dias').innerText = `${dias} dias`;
+            document.getElementById('dias').innerText = `${dias} dias,`;
             document.getElementById('horas').innerText = `${horas} horas`;
-            document.getElementById('minutos').innerText = `${minutos} minutos`;
+            document.getElementById('minutos').innerText = `${minutos} minutos e`;
             document.getElementById('segundos').innerText = `${segundos} segundos`;
         }
 
